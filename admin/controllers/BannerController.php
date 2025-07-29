@@ -1,9 +1,8 @@
 <?php
 
-
 class BannerController
 {
-  //kết nối đến file model
+
   public $modelBanner;
   public function __construct()
   {
@@ -151,7 +150,7 @@ if (isset($_FILES['link_hinh_anh']) && $_FILES['link_hinh_anh']['error'] == 0) {
     }
 
 
-   
+
 
     $_SESSION['error'] = $errors;
     //logic sửa ảnh
