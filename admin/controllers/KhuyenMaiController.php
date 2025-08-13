@@ -19,7 +19,7 @@ class KhuyenMaiController{
     //Hàm hiển thị form thêm
     public function create(){
         require_once './views/khuyenmais/createkhuyenmai.php';
-          
+
 
     }
 
@@ -36,13 +36,13 @@ class KhuyenMaiController{
             $trang_thai = $_POST['trang_thai'];
             // var_dump($ma_khuyen_mai);die();
 
-            // validate
+
             $errors = [];
-       
+
             if(empty($ten_khuyen_mai)){
                 $errors['ten_khuyen_mai'] = 'Bạn phải tên khuyến mãi' ;
             }
-          
+
             if (empty($ma_khuyen_mai)) {
                $errors['ma_khuyen_mai'] = 'Bạn phải nhập mã khuyến mãi';
             }
@@ -97,9 +97,9 @@ class KhuyenMaiController{
             // lấy ra dữ liệu
             $id = $_POST['id'];
             $ten_khuyen_mai = $_POST['ten_khuyen_mai'];
-          
+
             $ma_khuyen_mai = $_POST['ma_khuyen_mai'];
-            $gia_tri = $_POST['gia_tri']; 
+            $gia_tri = $_POST['gia_tri'];
              $mo_ta = $_POST['mo_ta'];
             $ngay_bat_dau = $_POST['ngay_bat_dau'];
             $ngay_ket_thuc = $_POST['ngay_ket_thuc'];
@@ -108,7 +108,7 @@ class KhuyenMaiController{
 
             // validate
             $errors = [];
-       
+
             if(empty($ten_khuyen_mai)){
                 $errors['ten_khuyen_mai'] = 'Bạn phải nhập mô tả' ;
             }
