@@ -34,7 +34,7 @@ class KhuyenMaiController{
             $ngay_ket_thuc = $_POST['ngay_ket_thuc'];
             $mo_ta = $_POST['mo_ta'];
             $trang_thai = $_POST['trang_thai'];
-            // var_dump($ma_khuyen_mai);die();
+
 
 
             $errors = [];
@@ -62,10 +62,10 @@ class KhuyenMaiController{
                 $errors['trang_thai'] = 'Bạn phải nhập trạng thái' ;
             }
             if (empty($errors)) {
-                # nếu không có lỗi thì thêm dữ liệu
+
                 $this->modelKhuyenMai->postData($ten_khuyen_mai,  $ma_khuyen_mai, $gia_tri, $ngay_bat_dau, $ngay_ket_thuc, $mo_ta,$trang_thai);
                 unset($_SESSION['errors']);
-                // echo "Thêm thành công";
+
                 header('Location: ?act=khuyen-mai');
                 exit();
             }else{
