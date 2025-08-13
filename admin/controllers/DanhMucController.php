@@ -14,9 +14,9 @@ class DanhMucController
       $this->modelDanhMuc = new DanhMuc();
     }
 
-    // Danh sách 
+    // Danh sách
     public function ListCate() {
-        // echo 'Hello world';
+
 
         $danhMucs = $this->modelDanhMuc->getAll();
         // var_dump($danhMucs);
@@ -29,7 +29,7 @@ class DanhMucController
         require_once './views/DanhMucs/CreateDanhMuc.php';
     }
 
-    // Xử lý logic 
+    // Xử lý logic
     public function handleCre() {
         if($_SERVER['REQUEST_METHOD']=='POST'){
 
@@ -62,9 +62,9 @@ class DanhMucController
                 header('Location: ?act=form-danh-muc'); // Sửa lại khoảng trắng
                 exit();
             }
-            
-            
-            
+
+
+
 
         }
     }
@@ -82,7 +82,7 @@ class DanhMucController
      // Xử lý logic update
      public function handleUpdate() {
         if($_SERVER['REQUEST_METHOD']=='POST'){
- 
+
             $id = $_POST['id'];
             $ten_danh_muc = $_POST['ten_danh_muc'];
             $mo_ta = $_POST['mo_ta'];
@@ -113,9 +113,9 @@ class DanhMucController
                 header('Location: ?act=form-sua-danh-muc'); // Sửa lại khoảng trắng
                 exit();
             }
-            
-            
-            
+
+
+
 
         }
 
@@ -137,5 +137,5 @@ class DanhMucController
 
     // test 123 update
 
-    
+
 }
