@@ -16,13 +16,13 @@ class TinTucController
         require_once './views/TinTucs/ListTinTuc.php';
     }
 
-    // Hiển thị form tạo tin tức
+
     public function Cre()
     {
         require_once './views/TinTucs/CreateTinTuc.php';
     }
 
-    // Xử lý thêm tin tức
+
     public function handleCre()
     {
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -32,7 +32,7 @@ class TinTucController
             $trang_thai = $_POST['trang_thai'];
 
             // Xử lý tải lên hình ảnh
-         
+
             $hinh_anh = null;
             if (isset($_FILES['hinh_anh']) && $_FILES['hinh_anh']['error'] == 0) {
                 $target_dir = "uploads/";
@@ -40,7 +40,7 @@ class TinTucController
 
                 // Di chuyển file đến thư mục uploads
                 if (move_uploaded_file($_FILES["hinh_anh"]["tmp_name"], $target_file)) {
-                    $hinh_anh = $target_file; 
+                    $hinh_anh = $target_file;
                 } else {
                     echo "Xin lỗi, đã xảy ra lỗi khi tải lên hình ảnh của bạn.";
                 }
@@ -58,10 +58,10 @@ class TinTucController
             if (empty($Error)) {
                 $this->modelTinTuc->CreateTinTuc($tieu_de, $noi_dung, $ngay_xuat_ban, $hinh_anh, $trang_thai);
                 unset($_SESSION['Error']);
-                // echo"thêm thành công";
+
                 header('Location: ?act=tin-tucs');
                 exit();
-               
+
             } else {
                 $_SESSION['Error'] = $Error;
                 header('Location: ?act=form-add-tin-tuc');
@@ -87,10 +87,10 @@ class TinTucController
 
         $tieu_de = $_POST['tieu_de'];
         $noi_dung = $_POST['noi_dung'];
-        $ngay_xuat_ban = $_POST['ngay_xuat_ban']; 
+        $ngay_xuat_ban = $_POST['ngay_xuat_ban'];
         $trang_thai = $_POST['trang_thai'];
 
-      
+
         // Xử lý tải lên hình ảnh nếu có
         $hinh_anh = null;
         if (isset($_FILES['hinh_anh']) && $_FILES['hinh_anh']['error'] == 0) {
@@ -122,7 +122,7 @@ class TinTucController
             $Error['noi_dung'] = 'Nội dung là bắt buộc';
         }
         if (empty($ngay_xuat_ban)) {
-            $Error['ngay_xuat_ban'] = 'Ngày xuất bản là bắt buộc'; 
+            $Error['ngay_xuat_ban'] = 'Ngày xuất bản là bắt buộc';
         }
 
         if (empty($Error)) {
@@ -131,7 +131,7 @@ class TinTucController
                 // echo"thêm thành công";
                 header('Location: ?act=tin-tucs');
                 exit();
-        
+
         } else {
             $_SESSION['Error'] = $Error;
             header("Location: ?act=form-update-tin-tuc&id=$id");
@@ -146,10 +146,10 @@ class TinTucController
     public function Delete()
     {
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-            $id = $_POST['id']; 
-            $this->modelTinTuc->deleteData($id); 
-            header('Location: ?act=tin-tucs'); 
-            exit(); // 
+            $id = $_POST['id'];
+            $this->modelTinTuc->deleteData($id);
+            header('Location: ?act=tin-tucs');
+            exit(); //
         }
     }
 }
