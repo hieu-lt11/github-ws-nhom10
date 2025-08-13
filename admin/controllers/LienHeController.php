@@ -2,14 +2,14 @@
 
 class LienHeController
 {
-    //Kết nối file moddel
+
     public $modelLienHe;
 
     public function __construct()
     {
         $this->modelLienHe = new LienHe();
     }
-    //Hiển thị danh sách liên hệ 
+    //Hiển thị danh sách liên hệ
     public function index(){
         //Lấy ra dữ liệu liên hệ
         $danhSachLienHe = $this -> modelLienHe -> getAllLienHe();
@@ -19,17 +19,16 @@ class LienHeController
         require_once './views/lienhe/listlienhe.php';
     }
 
-    //Hàm hiển thị form thêm
     public function create(){
         require_once './views/lienhe/create_lien_he.php';
-          
+
 
     }
 
     //Hàm xử lý thêm vào csdl
     public function store(){
         if($_SERVER['REQUEST_METHOD'] == 'POST'){
-            // lấy ra dữ liệu
+
             $ten = $_POST['ten'];
             $email = $_POST['email'];
             $so_dien_thoai = $_POST['so_dien_thoai'];
@@ -37,10 +36,10 @@ class LienHeController
 
             $ngay_tao = $_POST['ngay_tao'];
             $trang_thai = $_POST['trang_thai'];
-    
+
             // validate
             $errors = [];
-       
+
             if(empty($ten)){
                 $errors['ten'] = 'Bạn phải nhập tên liên hệ' ;
             }
@@ -79,7 +78,7 @@ class LienHeController
     public function edit(){
         //lấy id
         $id = $_GET['lien_he_id'];
-        // lấy thông tin chi tiết của danh mục
+
         $lienHe = $this -> modelLienHe->getDeltailData($id);
         require_once './views/lienhe/edit_lien_he.php';
         // var_dump($lienHe);
@@ -104,7 +103,7 @@ class LienHeController
 
             // validate
             $errors = [];
-       
+
             if(empty($ten)){
                 $errors['ten'] = 'Bạn phải nhập tên liên hệ' ;
             }
